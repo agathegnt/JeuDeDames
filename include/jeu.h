@@ -15,7 +15,7 @@ class jeu
         bool checkPriseObligatoire (int colonne, int ligne); //check si il y a prise obligatoire et supprime le pion pris si besoin
     protected:
     private:
-        std::vector <std::vector<piece> > m_board (10, std::vector<piece> (10));
+        std::vector <std::vector<piece> > m_board;
 };
 
 #endif // JEU_H

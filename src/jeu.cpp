@@ -1,6 +1,8 @@
 #include "jeu.h"
+#include <iostream>
+using namespace std;
 
-jeu::jeu()
+jeu::jeu() : jeu (10, std::vector<piece> (10))
 {
     //ctor
     //remplissage des lignes 0 et 2 avec des pions noirs
@@ -42,17 +44,17 @@ jeu::~jeu()
     //dtor
 }
 
-bool deplace(int color)
+bool jeu::deplace(int color)
 {
     //deplacementAutorise
     bool deplacementAutorise (true);
 
     // a qui le tour
-    if (color=BLANC)
+    if (color==BLANC)
     {
         cout << "c'est au tour du joueur blanc"<<endl;
     }
-    else if (color=NOIR)
+    else if (color==NOIR)
     {
         cout << "c'est au tour du joueur noir"<<endl;
     }
@@ -74,27 +76,34 @@ bool deplace(int color)
     cin >> ligne_visee;
 
     //check si pion dans cette case
-    if ((m_board[colonne][ligne])=color)
-
-    //si le pion est de la bonne couleur
-    if ((m_board[colonne][ligne]).getColor()!=color)
+    if (m_board[colonne][ligne].empty())
     {
-        cout<<"Le pion choisi n'est pas de la bonne couleur"<<endl;
+        cout<<"Il n'y a pas de pion dans cette case"<<endl;
         deplacementAutorise = false;
     }
+
     else
     {
-        //check si il y a prise obligatoire et supprime le pion pris si besoin
-        deplacementAutorise = checkPrise (colonne_visee, ligne_visee);
-
-        if (!deplacementAutorise)
+        //si le pion est de la bonne couleur
+        if ((m_board[colonne][ligne]).getColor()!=color)
         {
-            cout << "Le deplacement n'est pas autorise"<< endl;
+            cout<<"Le pion choisi n'est pas de la bonne couleur"<<endl;
+            deplacementAutorise = false;
         }
         else
         {
-            m_board[colonne_visee][ligne_visee]=m_board[colonne][ligne];
-            m_board[colonne_visee][ligne_visee]=[];
+            //check si il y a prise obligatoire et supprime le pion pris si besoin
+            deplacementAutorise = checkPrise (colonne_visee, ligne_visee);
+
+            if (!deplacementAutorise)
+            {
+                cout << "Le deplacement n'est pas autorise"<< endl;
+            }
+            else
+            {
+                m_board[colonne_visee][ligne_visee]=m_board[colonne][ligne];
+                m_board[colonne_visee][ligne_visee]=[];
+            }
         }
     }
 }
