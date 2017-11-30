@@ -73,10 +73,13 @@ bool deplace(int color)
     cout << "Ligne du pion a deplacer"<<endl;
     cin >> ligne_visee;
 
-    //check le pion est de la bonne couleur
+    //check si pion dans cette case
+    if ((m_board[colonne][ligne])=color)
+
+    //si le pion est de la bonne couleur
     if ((m_board[colonne][ligne]).getColor()!=color)
     {
-        cout<<"ERROR le pion choisi n'est pas de la bonne couleur"<<endl;
+        cout<<"Le pion choisi n'est pas de la bonne couleur"<<endl;
         deplacementAutorise = false;
     }
     else
@@ -86,11 +89,12 @@ bool deplace(int color)
 
         if (!deplacementAutorise)
         {
-            cout << "Le deplacement n'est pas autorisŽ"<< endl;
+            cout << "Le deplacement n'est pas autorise"<< endl;
         }
         else
         {
             m_board[colonne_visee][ligne_visee]=m_board[colonne][ligne];
+            m_board[colonne_visee][ligne_visee]=[];
         }
     }
 }

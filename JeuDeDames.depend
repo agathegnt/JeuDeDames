@@ -3,7 +3,8 @@
 	<iostream>
 	"piece.h"
 
-1512029698 /Users/agatheguenot/Documents/CENTRALE/RV/MEDEV/JeuDeDames/include/piece.h
+1512038102 /Users/agatheguenot/Documents/CENTRALE/RV/MEDEV/JeuDeDames/include/piece.h
+	"header.h"
 
 1512028964 source:/Users/agatheguenot/Documents/CENTRALE/RV/MEDEV/JeuDeDames/src/dame.cpp
 	"dame.h"
@@ -19,4 +20,6 @@
 
 1512028925 /Users/agatheguenot/Documents/CENTRALE/RV/MEDEV/JeuDeDames/include/pion.h
 	<piece.h>
+
+1512033068 /Users/agatheguenot/Documents/CENTRALE/RV/MEDEV/JeuDeDames/include/header.h
 
