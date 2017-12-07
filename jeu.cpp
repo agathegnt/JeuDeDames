@@ -71,9 +71,9 @@ bool jeu::deplace(int color)
     //choix case visee
     int colonne_visee;
     int ligne_visee;
-    cout << "Colonne du pion a deplacer"<<endl;
+    cout << "Colonne de la case visee"<<endl;
     cin >> colonne_visee;
-    cout << "Ligne du pion a deplacer"<<endl;
+    cout << "Ligne de la case visee"<<endl;
     cin >> ligne_visee;
 
     //check si les cases de depart et visee sont sur le plateau
@@ -111,6 +111,7 @@ bool jeu::deplace(int color)
                 }
                 else
                 {
+                    cout<<"la prise obligatoire est respectee"<<endl;
                     m_board[colonne_visee][ligne_visee]=m_board[colonne][ligne];
                     m_board[colonne_visee][ligne_visee]=piece();
                 }
@@ -124,6 +125,8 @@ bool jeu::checkPriseObligatoire (int colonne, int ligne, int colonne_visee, int 
 {
     bool deplacementAutorise (false);
     bool deplacementObligatoire (false);
+
+    cout<<"Appel de la fonction checkPriseObligatoire"<<endl;
 
     //parcours du plateau
     for (int k=0; k<10; k++)
@@ -157,6 +160,7 @@ bool jeu::checkPriseObligatoire (int colonne, int ligne, int colonne_visee, int 
 
         }
     }
+
     // si les cases sont vides, le deplacement est autorise
     if (!deplacementObligatoire)
     {
@@ -189,5 +193,24 @@ bool jeu::deplacementUneCaseOK (int colonne, int ligne, int colonne_visee, int l
 
 void jeu::affichage ()
 {
-
+    //parcours du plateau colonnes k et lignes l
+    for (int l=0; l<10; l++)
+    {
+        for (int k=0; k<10; k++)
+        {
+            switch((m_board[k][l]).getColor())
+            {
+                case NOIR :
+                    cout<<"N ";
+                    break;
+                case BLANC :
+                    cout<<"B ";
+                    break;
+                case -1 :
+                    cout<<"- ";
+                    break;
+            }
+        }
+        cout << endl;
+    }
 }
