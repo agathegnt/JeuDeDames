@@ -10,8 +10,6 @@ class jeu
         jeu();
         virtual ~jeu();
 
-		int getSize();
-		piece getCase(int colonne, int ligne);
 		std::vector <std::vector<piece> > getPlateau();
 
         //methodes
