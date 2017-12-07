@@ -23,3 +23,19 @@
 
 1512631965 /Users/agatheguenot/Documents/CENTRALE/RV/MEDEV/JeuDeDames/include/header.h
 
+1512631965 /Users/agatheguenot/Documents/CENTRALE/RV/MEDEV/JeuDeDames/piece.h
+	"header.h"
+
+1512631965 /Users/agatheguenot/Documents/CENTRALE/RV/MEDEV/JeuDeDames/header.h
+
+1512634658 source:/Users/agatheguenot/Documents/CENTRALE/RV/MEDEV/JeuDeDames/jeu.cpp
+	"jeu.h"
+	<iostream>
+
+1512632989 /Users/agatheguenot/Documents/CENTRALE/RV/MEDEV/JeuDeDames/jeu.h
+	"piece.h"
+	<vector>
+
+1512631965 source:/Users/agatheguenot/Documents/CENTRALE/RV/MEDEV/JeuDeDames/piece.cpp
+	"piece.h"
+

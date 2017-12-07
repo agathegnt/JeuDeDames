@@ -109,9 +109,32 @@ bool jeu::deplace(int color)
     return deplacementAutorise;
 }
 
-bool checkPriseObligatoire (int colonne, int ligne, int colonne_visee, int ligne_visee)
+bool jeu::checkPriseObligatoire (int colonne, int ligne, int colonne_visee, int ligne_visee)
 {
-    bool deplacementAutorise (true);
+    bool deplacementAutorise (false);
+    bool CasesVides (true);
 
+    //cherche si il y a des pieces autour dans les cases diagonales voisines
+    for (int i=-1; i+=2; i<2)
+    {
+        for (int j=-1; j+=2; j<2)
+        {
+            // si piece dans la direction de la case visee, le deplacement est autorise
+            if ((m_board[colonne+i][ligne+j].getType()!=NONE)&&(colonne+2*i==colonne_visee)&&(ligne+2*j==ligne_visee))
+            {
+                deplacementAutorise = true;
+            }
+            // si piece dans une des cases, on met false dans le booleen CasesVides
+            else if (m_board[colonne+i][ligne+j].getType()!=NONE)
+            {
+                CasesVides=false;
+            }
+        }
+    }
+    // si les cases sont vides, le deplacement est autorisŽ
+    if (CasesVides)
+    {
+        deplacementAutorise = true;
+    }
     return deplacementAutorise;
 }
