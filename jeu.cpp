@@ -76,34 +76,44 @@ bool jeu::deplace(int color)
     cout << "Ligne du pion a deplacer"<<endl;
     cin >> ligne_visee;
 
-    //check si pion dans cette case de depart
-    if ((m_board[colonne][ligne]).getType()==NONE)
+    //check si les cases de depart et visee sont sur le plateau
+    if ((colonne<0)||(colonne>9)||(colonne_visee<0)||(colonne_visee>9)||(ligne<0)||(ligne>9)||(ligne_visee<0)||(ligne_visee>9))
     {
-        cout<<"Il n'y a pas de pion dans cette case"<<endl;
+        cout<<"Une case est hors du plateau"<<endl;
         deplacementAutorise = false;
     }
 
     else
     {
-        //si le pion de la case de depart est de la bonne couleur
-        if ((m_board[colonne][ligne]).getColor()!=color)
+        //check si pion dans cette case de depart
+        if ((m_board[colonne][ligne]).getType()==NONE)
         {
-            cout<<"Le pion choisi n'est pas de la bonne couleur"<<endl;
+            cout<<"Il n'y a pas de pion dans cette case"<<endl;
             deplacementAutorise = false;
         }
+
         else
         {
-            //check si il y a prise obligatoire et supprime le pion pris si besoin
-            deplacementAutorise = checkPriseObligatoire (colonne, ligne, colonne_visee, ligne_visee, color);
-
-            if (!deplacementAutorise)
+            //si le pion de la case de depart est de la bonne couleur
+            if ((m_board[colonne][ligne]).getColor()!=color)
             {
-                cout << "Le deplacement n'est pas autorise"<< endl;
+                cout<<"Le pion choisi n'est pas de la bonne couleur"<<endl;
+                deplacementAutorise = false;
             }
             else
             {
-                m_board[colonne_visee][ligne_visee]=m_board[colonne][ligne];
-                m_board[colonne_visee][ligne_visee]=piece();
+                //check si il y a prise obligatoire et supprime le pion pris si besoin
+                deplacementAutorise = checkPriseObligatoire (colonne, ligne, colonne_visee, ligne_visee, color);
+
+                if (!deplacementAutorise)
+                {
+                    cout << "Le deplacement n'est pas autorise"<< endl;
+                }
+                else
+                {
+                    m_board[colonne_visee][ligne_visee]=m_board[colonne][ligne];
+                    m_board[colonne_visee][ligne_visee]=piece();
+                }
             }
         }
     }
