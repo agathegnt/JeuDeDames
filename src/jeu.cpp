@@ -75,8 +75,8 @@ bool jeu::deplace(int color)
     cout << "Ligne du pion a deplacer"<<endl;
     cin >> ligne_visee;
 
-    /*//check si pion dans cette case
-    if (m_board[colonne][ligne].empty())
+    //check si pion dans cette case de depart
+    if (m_board[colonne][ligne].getType()==NONE)
     {
         cout<<"Il n'y a pas de pion dans cette case"<<endl;
         deplacementAutorise = false;
@@ -84,7 +84,7 @@ bool jeu::deplace(int color)
 
     else
     {
-        //si le pion est de la bonne couleur
+        //si le pion de la case de depart est de la bonne couleur
         if ((m_board[colonne][ligne]).getColor()!=color)
         {
             cout<<"Le pion choisi n'est pas de la bonne couleur"<<endl;
@@ -93,7 +93,7 @@ bool jeu::deplace(int color)
         else
         {
             //check si il y a prise obligatoire et supprime le pion pris si besoin
-            deplacementAutorise = checkPrise (colonne_visee, ligne_visee);
+            deplacementAutorise = checkPriseObligatoire (colonne, ligne, colonne_visee, ligne_visee);
 
             if (!deplacementAutorise)
             {
@@ -102,8 +102,16 @@ bool jeu::deplace(int color)
             else
             {
                 m_board[colonne_visee][ligne_visee]=m_board[colonne][ligne];
-                m_board[colonne_visee][ligne_visee]=[];
+                m_board[colonne_visee][ligne_visee]=piece();
             }
         }
-    }*/
+    }
+    return deplacementAutorise;
+}
+
+bool checkPriseObligatoire (int colonne, int ligne, int colonne_visee, int ligne_visee)
+{
+    bool deplacementAutorise (true);
+
+    return deplacementAutorise;
 }

@@ -12,7 +12,7 @@ class jeu
 
         //methodes
         bool deplace(int color);
-        bool checkPriseObligatoire (int colonne, int ligne); //check si il y a prise obligatoire et supprime le pion pris si besoin
+        bool checkPriseObligatoire (int colonne, int ligne, int colonne_visee, int ligne_visee); //check si il y a prise obligatoire et supprime le pion pris si besoin
     protected:
     private:
         std::vector <std::vector<piece> > m_board;
