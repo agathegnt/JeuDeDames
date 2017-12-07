@@ -1,5 +1,6 @@
 #include "jeu.h"
 #include <iostream>
+#include <cstdlib>
 using namespace std;
 
 jeu::jeu() : m_board (10, std::vector<piece> (10))
@@ -149,8 +150,30 @@ bool jeu::checkPriseObligatoire (int colonne, int ligne, int colonne_visee, int 
     // si les cases sont vides, le deplacement est autorise
     if (!deplacementObligatoire)
     {
-        deplacementAutorise = true;
+        // check si c'est bien un deplacement d'une case en diagonale
+        bool deplacementUneCase = deplacementUneCaseOK (colonne, ligne, colonne_visee, ligne_visee);
+        if (deplacementUneCase)
+        {
+            deplacementAutorise = true;
+        }
     }
+    return deplacementAutorise;
+}
+
+bool jeu::deplacementUneCaseOK (int colonne, int ligne, int colonne_visee, int ligne_visee)
+{
+    bool deplacementAutorise(false);
+    // calcul de la difference entre colonne de depart et colonne visee
+    int diffColonne = abs(colonne - colonne_visee);
+    // idem pour les lignes
+    int diffLigne = abs(ligne - ligne_visee);
+
+    // si cette difference est de 1 en valeur absolue pour les 2, le deplacement est autorise
+    if ((diffColonne==1)&&(diffLigne==1))
+    {
+        deplacementAutorise=true;
+    }
+
     return deplacementAutorise;
 }
 
