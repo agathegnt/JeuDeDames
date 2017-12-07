@@ -46,3 +46,9 @@ main.cpp
 piece.cpp
 src/jeu.cpp
 src/piece.cpp
+header.h
+*.h
+JeuDeDames.cbp
+JeuDeDames.cpp
+JeuDeDames.depend
+piece.cpp
