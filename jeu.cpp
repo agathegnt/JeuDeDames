@@ -45,6 +45,12 @@ jeu::~jeu()
     //dtor
 }
 
+
+std::vector <std::vector<piece> > jeu::getPlateau(){
+	return m_board;
+}
+
+
 bool jeu::deplace(int color)
 {
     //deplacementAutorise
