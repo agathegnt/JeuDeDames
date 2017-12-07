@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-jeu::jeu() : jeu (10, std::vector<piece> (10))
+jeu::jeu() : m_board (10, std::vector<piece> (10))
 {
     //ctor
     //remplissage des lignes 0 et 2 avec des pions noirs
@@ -75,7 +75,7 @@ bool jeu::deplace(int color)
     cout << "Ligne du pion a deplacer"<<endl;
     cin >> ligne_visee;
 
-    //check si pion dans cette case
+    /*//check si pion dans cette case
     if (m_board[colonne][ligne].empty())
     {
         cout<<"Il n'y a pas de pion dans cette case"<<endl;
@@ -105,5 +105,5 @@ bool jeu::deplace(int color)
                 m_board[colonne_visee][ligne_visee]=[];
             }
         }
-    }
+    }*/
 }

@@ -7,6 +7,7 @@
 class piece
 {
     public:
+        piece();
         piece(int color);
         virtual ~piece();
 
