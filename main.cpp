@@ -6,8 +6,6 @@ using namespace std;
 int main()
 {
     cout << "Hello world!" << endl;
-    //variables
-    bool fin (false);
 
     //creation du plateau de jeu
     jeu plateau;

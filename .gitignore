@@ -56,3 +56,4 @@ bin/Debug/JeuDeDames
 JeuDeDames.depend
 JeuDeDames.depend
 main.cpp
+*.depend

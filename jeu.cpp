@@ -132,8 +132,6 @@ bool jeu::checkPriseObligatoire (int colonne, int ligne, int colonne_visee, int 
     bool deplacementAutorise (false);
     bool deplacementObligatoire (false);
 
-    cout<<"Appel de la fonction checkPriseObligatoire"<<endl;
-
     //parcours du plateau
     for (int k=0; k<10; k++)
     {
