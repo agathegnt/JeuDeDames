@@ -28,10 +28,13 @@ TEST(TestPieceCreation,TypesEtCouleur){
 }
 
 //On teste si le plateau s'initial permet de bouger
-TEST(InitPlateau,PiecesOuIlFaut){
+TEST(InitPlateau,PiecePeutJouer){
 
 	jeu j;
 
+	EXPECT_EQ(1,((j.getPlateau())[0][3]).getColor() );
+	EXPECT_EQ(-1,((j.getPlateau())[1][4]).getColor() );
+	
 	/*
 	for(int colonne = 0; colonne < (j.getPlateau()).size(); colonne++)
 	{
