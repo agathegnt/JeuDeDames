@@ -76,7 +76,7 @@ bool jeu::deplace(int color)
     cin >> ligne_visee;
 
     //check si pion dans cette case de depart
-    if (m_board[colonne][ligne].getType()==NONE)
+    if ((m_board[colonne][ligne]).getType()==NONE)
     {
         cout<<"Il n'y a pas de pion dans cette case"<<endl;
         deplacementAutorise = false;

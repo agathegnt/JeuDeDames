@@ -21,3 +21,13 @@ int piece::getColor()
 {
     return m_color;
 }
+
+int piece::getType()
+{
+	return m_type;
+}
+
+void piece::setType(int type)
+{
+	m_type = type;
+}
