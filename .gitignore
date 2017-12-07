@@ -52,3 +52,5 @@ JeuDeDames.cbp
 JeuDeDames.cpp
 JeuDeDames.depend
 piece.cpp
+bin/Debug/JeuDeDames
+JeuDeDames.depend

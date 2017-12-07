@@ -93,7 +93,7 @@ bool jeu::deplace(int color)
         else
         {
             //check si il y a prise obligatoire et supprime le pion pris si besoin
-            deplacementAutorise = checkPriseObligatoire (colonne, ligne, colonne_visee, ligne_visee);
+            deplacementAutorise = checkPriseObligatoire (colonne, ligne, colonne_visee, ligne_visee, color);
 
             if (!deplacementAutorise)
             {
@@ -109,32 +109,52 @@ bool jeu::deplace(int color)
     return deplacementAutorise;
 }
 
-bool jeu::checkPriseObligatoire (int colonne, int ligne, int colonne_visee, int ligne_visee)
+bool jeu::checkPriseObligatoire (int colonne, int ligne, int colonne_visee, int ligne_visee, int color)
 {
     bool deplacementAutorise (false);
-    bool CasesVides (true);
+    bool deplacementObligatoire (false);
 
-    //cherche si il y a des pieces autour dans les cases diagonales voisines
-    for (int i=-1; i+=2; i<2)
+    //parcours du plateau
+    for (int k=0; k<10; k++)
     {
-        for (int j=-1; j+=2; j<2)
+        for (int l=0; l<10; l++)
         {
-            // si piece dans la direction de la case visee, le deplacement est autorise
-            if ((m_board[colonne+i][ligne+j].getType()!=NONE)&&(colonne+2*i==colonne_visee)&&(ligne+2*j==ligne_visee))
+            //pour chaque pion de la couleur du joueur situe colonne k et ligne l
+            if ((m_board[k][l]).getColor()==color)
             {
-                deplacementAutorise = true;
+                //cherche si il y a des pieces autour dans les cases diagonales voisines
+                for (int i=-1; i<2; i+=2)
+                {
+                    for (int j=-1; j<2; j+=2)
+                    {
+                        // si piece dans la direction de la case visee, le deplacement est autorise
+                        if (((m_board[k+i][l+j]).getType()!=NONE)&&(k+2*i==colonne_visee)&&(l+2*j==ligne_visee)&&(k==colonne)&&(l==ligne))
+                        {
+                            deplacementAutorise = true;
+
+                            //on supprime la piece presente dans cette case
+                            m_board[colonne+i][ligne+j]=piece();
+                        }
+                        // sinon si il existe un deplacement obligatoire
+                        else if ((m_board[k+i][l+j]).getType()!=NONE)
+                        {
+                            deplacementObligatoire=true;
+                        }
+                    }
+                }
             }
-            // si piece dans une des cases, on met false dans le booleen CasesVides
-            else if (m_board[colonne+i][ligne+j].getType()!=NONE)
-            {
-                CasesVides=false;
-            }
+
         }
     }
-    // si les cases sont vides, le deplacement est autorisŽ
-    if (CasesVides)
+    // si les cases sont vides, le deplacement est autorise
+    if (!deplacementObligatoire)
     {
         deplacementAutorise = true;
     }
     return deplacementAutorise;
+}
+
+void jeu::affichage ()
+{
+
 }
